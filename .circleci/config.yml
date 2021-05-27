@@ -12,6 +12,8 @@ jobs:
     - checkout
     - run:
         name: Get all dependencies
+        environment:
+          GO111MODULE: "off"
         command: |
           go get -v ./...
           go get -u github.com/onsi/ginkgo/ginkgo
