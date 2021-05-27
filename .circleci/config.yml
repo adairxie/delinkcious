@@ -6,7 +6,8 @@ jobs:
     - image: circleci/postgres:9.6-alpine
       environment: # environment variables for primary container
         POSTGRES_USER: postgres
-    working_directory: /app/github.com/adairxie/delinkcious
+        GO111MODULE: "off"
+    working_directory: /go/src/github.com/adairxie/delinkcious
     steps:
     - checkout
     - run:
