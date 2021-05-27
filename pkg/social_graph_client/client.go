@@ -4,12 +4,13 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	httptransport "github.com/go-kit/kit/transport/http"
-	om "github.com/the-gigi/delinkcious/pkg/object_model"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
+
+	om "github.com/adairxie/delinkcious/pkg/object_model"
+	httptransport "github.com/go-kit/kit/transport/http"
 )
 
 func NewClient(baseURL string) (om.SocialGraphManager, error) {

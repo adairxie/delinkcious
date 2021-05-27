@@ -2,12 +2,13 @@ package main
 
 import (
 	"context"
-	_ "github.com/lib/pq"
-	"github.com/the-gigi/delinkcious/pkg/db_util"
-	"github.com/the-gigi/delinkcious/pkg/social_graph_client"
 	"log"
 	"os"
 	"os/exec"
+
+	"github.com/adairxie/delinkcious/pkg/db_util"
+	"github.com/adairxie/delinkcious/pkg/social_graph_client"
+	_ "github.com/lib/pq"
 )
 
 func check(err error) {

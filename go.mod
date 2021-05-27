@@ -1,4 +1,6 @@
-module github.com/the-gigi/delinkcious
+module github.com/adairxie/delinkcious
+
+go 1.14
 
 require (
 	github.com/Masterminds/squirrel v0.0.0-20181030160206-3ba160b0147f

@@ -1,9 +1,9 @@
 package user_manager
 
 import (
+	om "github.com/adairxie/delinkcious/pkg/object_model"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	om "github.com/the-gigi/delinkcious/pkg/object_model"
 )
 
 var _ = Describe("user manager tests", func() {

@@ -2,11 +2,13 @@ package link_manager
 
 import (
 	"errors"
-	"github.com/the-gigi/delinkcious/pkg/db_util"
-	om "github.com/the-gigi/delinkcious/pkg/object_model"
 	"time"
 
+	"github.com/adairxie/delinkcious/pkg/db_util"
+	om "github.com/adairxie/delinkcious/pkg/object_model"
+
 	"database/sql"
+
 	sq "github.com/Masterminds/squirrel"
 	_ "github.com/lib/pq"
 )
