@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: link-manager
-        image: ifangfang/delinkcious-link:0.2
+        image: ifangfang/delinkcious-link:0.2.1
         ports:
         - containerPort: 8080
 ---

@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: social-graph-manager
-        image: ifangfang/delinkcious-social-graph:0.2
+        image: ifangfang/delinkcious-social-graph:0.2.1
         ports:
         - containerPort: 9090
 ---
