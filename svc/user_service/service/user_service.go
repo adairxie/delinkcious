@@ -3,6 +3,7 @@ package service
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/adairxie/delinkcious/pkg/db_util"
 
@@ -19,6 +20,11 @@ func Run() {
 	store, err := sgm.NewDbUserStore(dbHost, dbPort, "postgres", "postgres")
 	if err != nil {
 		log.Fatal(err)
+	}
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "7070"
 	}
 
 	svc, err := sgm.NewUserManager(store)
@@ -48,6 +54,6 @@ func Run() {
 	http.Handle("/login", LoginHandler)
 	http.Handle("/logout", LogoutHandler)
 
-	log.Println("Listening on port 7070...")
-	log.Fatal(http.ListenAndServe(":7070", nil))
+	log.Printf("Listening on port %s...\n", port)
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }

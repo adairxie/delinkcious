@@ -19,9 +19,21 @@ spec:
     spec:
       containers:
       - name: link-manager
-        image: ifangfang/delinkcious-link:0.2.1
+        image: ifangfang/delinkcious-link:0.3
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: link-manager-config
+        volumeMounts:
+        - name: mutual-auth
+          mountPath: /etc/delinkciout
+          readOnly: true
+      volumes:
+      - name: mutual-auth
+        secret:
+          secretName: link-mutual-auth
 ---
 apiVersion: v1
 kind: Service

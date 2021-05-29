@@ -7,11 +7,15 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"os"
 	"strings"
 
+	"github.com/adairxie/delinkcious/pkg/auth_util"
 	om "github.com/adairxie/delinkcious/pkg/object_model"
 	httptransport "github.com/go-kit/kit/transport/http"
 )
+
+const SERVICE_NAME = "social-graph-manager"
 
 func NewClient(baseURL string) (om.SocialGraphManager, error) {
 	// Quickly sanitize the instance string.
@@ -72,6 +76,12 @@ func encodeHTTPGenericRequest(_ context.Context, r *http.Request, request interf
 		return err
 	}
 	r.Body = ioutil.NopCloser(&buf)
+
+	if os.Getenv("DELINKCIOUS_MUTUAL_AUTH") != "false" {
+		token := auth_util.GetToken(SERVICE_NAME)
+		r.Header["Delinkcious-Caller-Token"] = []string{token}
+	}
+
 	return nil
 }
 

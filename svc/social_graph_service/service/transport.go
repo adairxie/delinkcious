@@ -5,8 +5,10 @@ import (
 	"encoding/json"
 	"errors"
 	"net/http"
+	"os"
 	"strings"
 
+	"github.com/adairxie/delinkcious/pkg/auth_util"
 	om "github.com/adairxie/delinkcious/pkg/object_model"
 	"github.com/go-kit/kit/endpoint"
 )
@@ -72,6 +74,17 @@ func decodeGetFollowingRequest(_ context.Context, r *http.Request) (interface{},
 }
 
 func decodeGetFollowersRequest(_ context.Context, r *http.Request) (interface{}, error) {
+	if os.Getenv("DELINKCIOUS_MUTUAL_AUTH") != "false" {
+		token := r.Header["Delinkcious-Caller-Token"]
+		if len(token) == 0 || token[0] == "" {
+			return nil, errors.New("Missing caller token")
+		}
+
+		if !auth_util.HasCaller("link-manager", token[0]) {
+			return nil, errors.New("Unauthorized caller")
+		}
+	}
+
 	parts := strings.Split(r.URL.Path, "/")
 	username := parts[len(parts)-1]
 	if username == "" || username == "followers" {

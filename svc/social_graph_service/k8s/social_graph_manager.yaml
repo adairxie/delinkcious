@@ -19,9 +19,21 @@ spec:
     spec:
       containers:
       - name: social-graph-manager
-        image: ifangfang/delinkcious-social-graph:0.2.1
+        image: ifangfang/delinkcious-social-graph:0.3
+        imagePullPolicy: Always
         ports:
         - containerPort: 9090
+        envFrom:
+        - configMapRef:
+          name: social-graph-manager-config
+        volumeMounts:
+        - name: mutual-auth
+          mountPath: /etc/delinkciout
+          readOnly: true
+      volumes:
+      - name: mutual-auth
+        secret:
+          secretName: social-graph-mutual-auth
 ---
 apiVersion: v1
 kind: Service
