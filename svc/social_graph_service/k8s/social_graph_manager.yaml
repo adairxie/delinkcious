@@ -25,10 +25,10 @@ spec:
         - containerPort: 9090
         envFrom:
         - configMapRef:
-          name: social-graph-manager-config
+            name: social-graph-manager-config
         volumeMounts:
         - name: mutual-auth
-          mountPath: /etc/delinkciout
+          mountPath: /etc/delinkcious
           readOnly: true
       volumes:
       - name: mutual-auth

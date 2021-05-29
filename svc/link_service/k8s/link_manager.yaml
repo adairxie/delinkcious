@@ -28,7 +28,7 @@ spec:
             name: link-manager-config
         volumeMounts:
         - name: mutual-auth
-          mountPath: /etc/delinkciout
+          mountPath: /etc/delinkcious
           readOnly: true
       volumes:
       - name: mutual-auth
