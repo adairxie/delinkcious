@@ -1,6 +1,5 @@
 # from datetime import datetime
 import os
-from typing_extensions import Required
 
 import requests
 from flask import request
