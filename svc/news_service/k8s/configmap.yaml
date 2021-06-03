@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: news-manager-config
+  namespace: default
+data:
+  PORT: "6060"
