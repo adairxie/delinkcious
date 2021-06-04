@@ -17,7 +17,6 @@ spec:
     matchLabels:
       svc: news
       app: manager
-  serviceAccountName: news-manager
   template:
     metadata:
       labels:
@@ -33,6 +32,7 @@ spec:
         envFrom:
         - configMapRef:
             name: news-manager-config
+      serviceAccountName: news-manager
 ---
 apiVersion: v1
 kind: Service
